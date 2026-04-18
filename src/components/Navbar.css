@@ -1,0 +1,137 @@
+.navbar {
+  height: var(--nav-height);
+  background-color: var(--amazon-blue-dark);
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  color: white;
+  padding: 0 10px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  padding: 2px 5px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+}
+
+.nav-logo:hover {
+  border-color: white;
+}
+
+.logo-img {
+  width: 100px;
+  object-fit: contain;
+}
+
+.nav-search {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  border-radius: 4px;
+  margin: 0 15px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.search-form {
+  display: flex;
+  width: 100%;
+}
+
+.search-input {
+  flex: 1;
+  height: 40px;
+  border: none;
+  padding: 10px;
+  outline: none;
+  font-size: 15px;
+}
+
+.search-btn {
+  width: 45px;
+  height: 40px;
+  background-color: var(--amazon-orange);
+  border: none;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background-color: var(--amazon-orange-hover);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.nav-option {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: white;
+  padding: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.nav-option:hover {
+  border-color: white;
+}
+
+.nav-option-lineOne {
+  font-size: 12px;
+}
+
+.nav-option-lineTwo {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.nav-cart {
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+}
+
+.nav-cart:hover {
+  border-color: white;
+}
+
+.cart-icon {
+  position: relative;
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -5px;
+  background-color: var(--amazon-orange);
+  color: #131921;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 0 6px;
+  font-size: 14px;
+}
+
+.cart-text {
+  margin-top: 10px;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+.no-underline:hover {
+  text-decoration: none;
+  color: white;
+}
