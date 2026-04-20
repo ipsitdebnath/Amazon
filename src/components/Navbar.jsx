@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 
 import "./Navbar.css";
 
@@ -61,13 +62,13 @@ function Navbar({ onSearch }) {
           <span className="nav-option-lineTwo">{theme === "light" ? "🌙 Dark" : "☀️ Light"}</span>
         </div>
 
-        <Link to={!user && "/login"} className="nav-option no-underline">
-          <div onClick={() => user && logout()}>
+        <Link to="/login" className="nav-option no-underline">
+          <div>
             <span className="nav-option-lineOne">
-              Hello, {user ? user.name : "Guest"}
+              Hello, Guest
             </span>
             <span className="nav-option-lineTwo">
-              {user ? "Sign Out" : "Sign In"}
+              Sign In
             </span>
           </div>
         </Link>

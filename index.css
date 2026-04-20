@@ -1,3 +1,15 @@
+:root {
+  --amazon-blue-dark: #131921;
+  --amazon-blue-light: #232f3e;
+  --amazon-orange: #f3a847;
+  --amazon-orange-hover: #e28c38;
+  --amazon-white: #ffffff;
+  --amazon-bg: #eaeded;
+  --amazon-border: #ddd;
+  --text-dark: #111;
+  --nav-height: 60px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,5 +18,12 @@
 }
 
 body {
-  background-color: #eaeded;
+  background-color: var(--amazon-bg);
+}
+
+[data-theme="dark"] {
+  --amazon-bg: #0f1111;
+  --amazon-white: #232f3e;
+  --amazon-border: #3a4553;
+  --text-dark: #ffffff;
 }
