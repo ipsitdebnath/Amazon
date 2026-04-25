@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Location from "./Location";
 import "./Navbar.css";
 
 function Navbar({ cart, user, onSearch }) {
@@ -93,6 +94,7 @@ function Navbar({ cart, user, onSearch }) {
             className="logo-img"
           />
         </Link>
+        <Location user={user} />
       </div>
 
       <div className="nav-search" ref={dropdownRef}>

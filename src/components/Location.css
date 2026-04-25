@@ -1,0 +1,44 @@
+.nav-location {
+  display: flex;
+  align-items: center;
+  padding: 5px 8px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: var(--transition);
+  color: white;
+  margin-left: 2px;
+  height: 50px;
+}
+
+.nav-location:hover {
+  border-color: white;
+}
+
+.location-icon {
+  display: flex;
+  align-items: flex-end;
+  margin-right: 2px;
+  margin-top: 8px;
+}
+
+.location-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.location-line-one {
+  font-size: 12px;
+  color: #cccccc;
+  font-weight: 400;
+  line-height: 14px;
+  white-space: nowrap;
+}
+
+.location-line-two {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 15px;
+  white-space: nowrap;
+}
