@@ -1,8 +1,10 @@
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import "./Cart.css";
 
-function Cart() {
+function CartPage() {
   const { cart, updateQuantity, removeFromCart } = useCart();
+  const navigate = useNavigate();
 
   const getCartTotal = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -12,13 +14,25 @@ function Cart() {
     return cart.reduce((total, item) => total + item.quantity, 0);
   };
 
+  const handleDecrease = (id, currentQty) => {
+    if (currentQty <= 1) {
+      removeFromCart(id);
+    } else {
+      updateQuantity(id, -1);
+    }
+  };
+
   return (
     <div className="cart-page">
       <div className="cart-left">
         <h1 className="cart-title">Shopping Cart</h1>
         {cart.length === 0 ? (
           <div className="empty-cart">
-            <p>Your Amazon Cart is empty.</p>
+            <h2>Your Amazon Cart is empty.</h2>
+            <p>Your shopping cart is waiting. Give it purpose – fill it with groceries, clothing, household supplies, electronics, and more.</p>
+            <button className="go-shopping-btn" onClick={() => navigate("/")}>
+              Go Shopping
+            </button>
           </div>
         ) : (
           <div className="cart-items">
@@ -26,13 +40,14 @@ function Cart() {
               <div key={item.id} className="cart-item">
                 <img src={item.image} alt={item.title} className="cart-item-image" />
                 <div className="cart-item-info">
-                  <h3>{item.title}</h3>
-                  <p className="cart-item-price">
-                    <strong>${item.price}</strong>
-                  </p>
+                  <Link to={`/product/${item.id}`} className="cart-item-title-link">
+                    <h3>{item.title}</h3>
+                  </Link>
+                  <p className="cart-item-stock">In Stock</p>
+                  <p className="cart-item-shipping">Eligible for FREE Shipping & FREE Returns</p>
                   <div className="cart-item-actions">
                     <div className="quantity-controls">
-                      <button onClick={() => updateQuantity(item.id, -1)}>-</button>
+                      <button onClick={() => handleDecrease(item.id, item.quantity)}>-</button>
                       <span>{item.quantity}</span>
                       <button onClick={() => updateQuantity(item.id, 1)}>+</button>
                     </div>
@@ -42,15 +57,27 @@ function Cart() {
                     </button>
                   </div>
                 </div>
+                <div className="cart-item-price">
+                  <strong>${item.price.toFixed(2)}</strong>
+                </div>
               </div>
             ))}
+            <div className="cart-items-subtotal">
+              Subtotal ({getTotalItems()} items): <strong>${getCartTotal().toFixed(2)}</strong>
+            </div>
           </div>
         )}
       </div>
 
       {cart.length > 0 && (
         <div className="cart-right">
-          <div className="cart-subtotal">
+          <div className="cart-subtotal-box">
+            <div className="cart-free-shipping">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#007600">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+              <span>Your order qualifies for FREE Shipping.</span>
+            </div>
             <h3>
               Subtotal ({getTotalItems()} items): <strong>${getCartTotal().toFixed(2)}</strong>
             </h3>
@@ -62,4 +89,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default CartPage;
