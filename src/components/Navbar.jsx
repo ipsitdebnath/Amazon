@@ -124,7 +124,7 @@ function Navbar({ cart, user, onSearch }) {
                     <span className="search-result-title">
                       {highlightText(product.title, searchTerm)}
                     </span>
-                    <span className="search-result-price">${product.price}</span>
+                    <span className="search-result-price">₹{(product.price * 96).toFixed(2)}</span>
                   </div>
                 </div>
               ))

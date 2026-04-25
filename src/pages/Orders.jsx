@@ -27,7 +27,7 @@ function Orders({ orders, onAddToCart }) {
                   </div>
                   <div className="order-info-block">
                     <span>TOTAL</span>
-                    <strong>${order.total.toFixed(2)}</strong>
+                    <strong>₹{(order.total * 96).toFixed(2)}</strong>
                   </div>
                 </div>
                 <div className="order-header-right">

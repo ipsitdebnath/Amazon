@@ -52,8 +52,9 @@ function ProductDetail({ onAddToCart }) {
   if (error) return <div className="pdp-error"><h2>{error}</h2><button onClick={() => navigate("/")}>Return to Home</button></div>;
   if (!product) return null;
 
+  const inrPrice = product.price * 96;
   const originalPrice = product.discountPercentage 
-    ? (product.price / (1 - product.discountPercentage / 100)).toFixed(2) 
+    ? (inrPrice / (1 - product.discountPercentage / 100)).toFixed(2) 
     : null;
 
   const images = product.images || [product.thumbnail];
@@ -105,15 +106,15 @@ function ProductDetail({ onAddToCart }) {
             <div className="pdp-discount">
               <span className="discount-badge">-{Math.round(product.discountPercentage)}%</span>
               <span className="pdp-price-large">
-                <span className="price-symbol">$</span>
-                {Math.floor(product.price)}
-                <span className="price-fraction">{(product.price % 1).toFixed(2).substring(2)}</span>
+                <span className="price-symbol">₹</span>
+                {Math.floor(inrPrice)}
+                <span className="price-fraction">{(inrPrice % 1).toFixed(2).substring(2)}</span>
               </span>
             </div>
           )}
           {originalPrice && (
             <div className="pdp-original-price">
-              Typical price: <span>${originalPrice}</span>
+              Typical price: <span>₹{originalPrice}</span>
             </div>
           )}
         </div>
@@ -126,7 +127,7 @@ function ProductDetail({ onAddToCart }) {
 
       <div className="pdp-right">
         <div className="pdp-buy-box">
-          <div className="pdp-buy-price">${product.price.toFixed(2)}</div>
+          <div className="pdp-buy-price">₹{(product.price * 96).toFixed(2)}</div>
           
           <div className="pdp-delivery">
             <p><strong>FREE delivery</strong> Wednesday.</p>

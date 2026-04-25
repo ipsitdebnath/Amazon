@@ -20,7 +20,13 @@ function Home({ searchTerm, onAddToCart }) {
         return res.json();
       })
       .then((data) => {
-      setProducts(data.products);
+      // Shuffle products randomly (Fisher-Yates)
+      const shuffled = [...data.products];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      setProducts(shuffled);
       
       // Extract unique categories for the filter
         const uniqueCategories = [...new Set(data.products.map((p) => p.category))];

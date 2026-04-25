@@ -19,13 +19,13 @@ function ProductCard({
     }, 1500);
   };
 
+  const inrPrice = price * 96;
   const originalPrice = discountPercentage 
-    ? (price / (1 - discountPercentage / 100)).toFixed(2) 
+    ? (inrPrice / (1 - discountPercentage / 100)).toFixed(2) 
     : null;
 
   return (
     <div className="product-card">
-      {category && <span className="product-category-badge">{category}</span>}
       
       <Link to={`/product/${id}`} className="product-image-container">
         <img src={image} alt={title} className="product-image" />
@@ -55,12 +55,12 @@ function ProductCard({
             <span className="discount-badge">-{Math.round(discountPercentage)}%</span>
           )}
           <div className="product-price">
-            <span className="price-symbol">$</span>
-            <span className="price-whole">{Math.floor(price)}</span>
-            <span className="price-fraction">{(price % 1).toFixed(2).substring(2)}</span>
+            <span className="price-symbol">₹</span>
+            <span className="price-whole">{Math.floor(inrPrice)}</span>
+            <span className="price-fraction">{(inrPrice % 1).toFixed(2).substring(2)}</span>
           </div>
           {originalPrice && (
-            <span className="original-price">M.R.P.: ${originalPrice}</span>
+            <span className="original-price">M.R.P.: ₹{originalPrice}</span>
           )}
         </div>
         
