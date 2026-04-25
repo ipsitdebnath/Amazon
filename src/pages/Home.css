@@ -1,20 +1,36 @@
 .home {
-  max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  background-color: #e3e6e6;
   padding-bottom: 50px;
 }
 
 .home-hero {
   width: 100%;
-  margin-bottom: -150px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  height: 400px;
+  background-image: url("https://m.media-amazon.com/images/I/61N83xtyr6L._SX3000_.jpg");
+  background-size: cover;
+  background-position: top center;
+  position: relative;
+  z-index: 0;
 }
 
-.home-banner {
-  width: 100%;
-  object-fit: cover;
-  height: 400px;
+.home-hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: linear-gradient(to bottom, rgba(227, 230, 230, 0), rgba(227, 230, 230, 1));
+}
+
+.home-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  margin-top: -100px;
+  position: relative;
+  z-index: 1;
 }
 
 .home-controls {
@@ -22,11 +38,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  margin: 0 10px 20px 10px;
+  margin-bottom: 25px;
   background-color: var(--amazon-white);
   border-radius: 8px;
-  position: relative;
-  z-index: 1;
   box-shadow: var(--shadow-sm);
   flex-wrap: wrap;
   gap: 15px;
@@ -62,10 +76,7 @@
 .home-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  padding: 0 10px;
-  position: relative;
-  z-index: 1;
+  gap: 20px;
 }
 
 @media (max-width: 1200px) {
@@ -78,6 +89,9 @@
   .home-row {
     grid-template-columns: repeat(2, 1fr);
   }
+  .home-container {
+    margin-top: -50px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -87,6 +101,12 @@
   .home-controls {
     flex-direction: column;
     align-items: flex-start;
+  }
+  .home-hero {
+    height: 250px;
+  }
+  .home-container {
+    margin-top: -30px;
   }
 }
 

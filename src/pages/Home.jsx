@@ -57,52 +57,48 @@ function Home({ searchTerm }) {
 
   return (
     <div className="home">
-      <div className="home-hero">
-        <img 
-          src="https://m.media-amazon.com/images/I/61N83xtyr6L._SX3000_.jpg" 
-          alt="Hero Banner" 
-          className="home-banner" 
-        />
-      </div>
+      <div className="home-hero"></div>
 
-      <div className="home-controls">
-        <div className="control-group">
-          <label>Category:</label>
-          <select value={category} onChange={(e) => setCategory(e.target.value)}>
-            <option value="all">All Categories</option>
-            {categories.map((c) => (
-              <option key={c} value={c}>{c}</option>
-            ))}
-          </select>
-        </div>
-
-        <div className="control-group">
-          <label>Sort by Price:</label>
-          <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
-            <option value="">Featured</option>
-            <option value="low-to-high">Low to High</option>
-            <option value="high-to-low">High to Low</option>
-          </select>
-        </div>
-      </div>
-
-      <div className="home-row">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              id={product.id}
-              title={product.title}
-              price={product.price}
-              rating={product.rating}
-              image={product.thumbnail}
-            />
-          ))
-        ) : (
-          <div className="no-products">
-            <h2>No products match your search.</h2>
+      <div className="home-container">
+        <div className="home-controls">
+          <div className="control-group">
+            <label>Category:</label>
+            <select value={category} onChange={(e) => setCategory(e.target.value)}>
+              <option value="all">All Categories</option>
+              {categories.map((c) => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
           </div>
-        )}
+
+          <div className="control-group">
+            <label>Sort by Price:</label>
+            <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
+              <option value="">Featured</option>
+              <option value="low-to-high">Low to High</option>
+              <option value="high-to-low">High to Low</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="home-row">
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                id={product.id}
+                title={product.title}
+                price={product.price}
+                rating={product.rating}
+                image={product.thumbnail}
+              />
+            ))
+          ) : (
+            <div className="no-products">
+              <h2>No products match your search.</h2>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
