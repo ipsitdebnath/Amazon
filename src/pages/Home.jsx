@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
+import HeroCarousel from "../components/HeroCarousel";
 import "./Home.css";
 
 function Home({ searchTerm, onAddToCart }) {
@@ -57,7 +58,7 @@ function Home({ searchTerm, onAddToCart }) {
 
   return (
     <div className="home">
-      <div className="home-hero"></div>
+      <HeroCarousel />
 
       <div className="home-container">
         <div className="home-controls">

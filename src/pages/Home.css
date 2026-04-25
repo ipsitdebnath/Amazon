@@ -4,25 +4,6 @@
   padding-bottom: 50px;
 }
 
-.home-hero {
-  width: 100%;
-  height: 400px;
-  background-image: url("https://m.media-amazon.com/images/I/61N83xtyr6L._SX3000_.jpg");
-  background-size: cover;
-  background-position: top center;
-  position: relative;
-  z-index: 0;
-}
-
-.home-hero::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 150px;
-  background: linear-gradient(to bottom, rgba(227, 230, 230, 0), rgba(227, 230, 230, 1));
-}
 
 .home-container {
   max-width: 1400px;
@@ -76,7 +57,7 @@
 .home-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 20px 0px;
 }
 
 @media (max-width: 1200px) {
@@ -101,9 +82,6 @@
   .home-controls {
     flex-direction: column;
     align-items: flex-start;
-  }
-  .home-hero {
-    height: 250px;
   }
   .home-container {
     margin-top: -30px;
