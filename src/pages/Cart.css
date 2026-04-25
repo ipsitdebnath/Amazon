@@ -1,0 +1,150 @@
+.cart-page {
+  display: flex;
+  padding: 20px;
+  max-width: 1500px;
+  margin: 0 auto;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.cart-left {
+  flex: 1;
+  background-color: var(--amazon-white);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.cart-title {
+  font-weight: 400;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item {
+  display: flex;
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item-image {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin-right: 20px;
+}
+
+.cart-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item-info h3 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #0f1111;
+  margin-bottom: 5px;
+}
+
+.cart-item-price {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f0f2f2;
+}
+
+.quantity-controls button {
+  background: transparent;
+  border: none;
+  padding: 5px 12px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.quantity-controls button:hover {
+  background: #e3e6e6;
+}
+
+.quantity-controls span {
+  padding: 0 10px;
+  font-size: 14px;
+  background: white;
+  min-width: 30px;
+  text-align: center;
+}
+
+.separator {
+  color: #ddd;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #007185;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.remove-btn:hover {
+  text-decoration: underline;
+}
+
+.cart-right {
+  width: 300px;
+  background-color: var(--amazon-white);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.cart-subtotal h3 {
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.checkout-btn {
+  width: 100%;
+  background-color: var(--amazon-yellow);
+  border: 1px solid #fcd200;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 2px 5px 0 rgba(213,217,217,.5);
+}
+
+.checkout-btn:hover {
+  background-color: var(--amazon-yellow-hover);
+}
+
+@media (max-width: 900px) {
+  .cart-page {
+    flex-direction: column;
+  }
+  .cart-right {
+    width: 100%;
+  }
+}

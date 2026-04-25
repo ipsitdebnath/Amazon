@@ -2,13 +2,13 @@
   max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: 50px;
 }
 
 .home-hero {
   width: 100%;
-  margin-bottom: -150px; /* Overlap effect like Amazon */
+  margin-bottom: -150px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-  z-index: -1;
 }
 
 .home-banner {
@@ -20,57 +20,90 @@
 .home-controls {
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
-  margin: 0 20px;
+  align-items: center;
+  padding: 15px 20px;
+  margin: 0 10px 20px 10px;
   background-color: var(--amazon-white);
-  border-radius: 4px;
+  border-radius: 8px;
   position: relative;
   z-index: 1;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .control-group {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+}
+
+.control-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #565959;
 }
 
 .control-group select {
-  padding: 5px;
-  border-radius: 4px;
-  border: 1px solid var(--amazon-border);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #d5d9d9;
+  background-color: #f0f2f2;
+  cursor: pointer;
+  font-size: 14px;
+  outline: none;
+  transition: var(--transition);
+}
+
+.control-group select:hover {
+  background-color: #e3e6e6;
 }
 
 .home-row {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  grid-auto-rows: 1fr;
-  z-index: 1;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
   padding: 0 10px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1200px) {
+  .home-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .home-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .home-row {
+    grid-template-columns: 1fr;
+  }
+  .home-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .home-loading, .home-error {
-  min-height: 50vh;
+  min-height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--amazon-blue-dark);
 }
 
 .no-products {
   width: 100%;
   text-align: center;
-  padding: 40px;
+  padding: 60px;
   grid-column: 1 / -1;
   background-color: var(--amazon-white);
-}
-
-/* Dark mode overrides */
-[data-theme="dark"] .home-controls {
-  box-shadow: none;
-  border: 1px solid var(--amazon-border);
-}
-[data-theme="dark"] .control-group select {
-  background-color: var(--amazon-bg);
-  color: var(--text-dark);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
 }
