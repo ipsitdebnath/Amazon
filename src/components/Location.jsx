@@ -3,6 +3,7 @@ import './Location.css';
 
 const Location = ({ user }) => {
   const displayLocation = user?.location || "Pune 411015";
+  const name = user?.name || "";
 
   return (
     <div className="nav-location">
@@ -13,8 +14,12 @@ const Location = ({ user }) => {
         </svg>
       </div>
       <div className="location-text">
-        <span className="location-line-one">Delivering to {displayLocation}</span>
-        <span className="location-line-two">Update location</span>
+        <span className="location-line-one">
+          {user ? `Deliver to ${name}` : "Delivering to"}
+        </span>
+        <span className="location-line-two">
+          {user ? displayLocation : "Pune 411015"}
+        </span>
       </div>
     </div>
   );

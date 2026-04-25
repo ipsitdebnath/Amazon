@@ -9,6 +9,7 @@ import Cart from "./pages/Cart";
 import ProductDetail from "./pages/ProductDetail";
 import Checkout from "./pages/Checkout";
 import Orders from "./pages/Orders";
+import Account from "./pages/Account";
 
 function App() {
   // ---- Shared state (lives here, passed as props, synced to localStorage) ----
@@ -114,6 +115,7 @@ function App() {
             <Route path="/product/:id" element={<ProductDetail onAddToCart={addToCart} />} />
             <Route path="/checkout" element={<Checkout cart={cart} onClearCart={clearCart} onAddOrder={addOrder} />} />
             <Route path="/orders" element={<Orders orders={orders} onAddToCart={addToCart} />} />
+            <Route path="/account" element={<Account user={user} />} />
           </Routes>
         </main>
         <Footer />
