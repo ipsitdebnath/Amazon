@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCountdown, getDealExpiration } from "../utils/timer";
 import "./ProductCard.css";
 
 function ProductCard({ 
@@ -10,9 +9,7 @@ function ProductCard({
 }) {
   const [isAdded, setIsAdded] = useState(false);
 
-  // Dynamic pricing timer logic
-  const [dealExpiresAt] = useState(() => getDealExpiration(id, discountPercentage));
-  const { isExpired, formattedTime } = useCountdown(dealExpiresAt);
+
 
   const handleAddToCart = (e) => {
     e.preventDefault();
@@ -29,7 +26,7 @@ function ProductCard({
     ? Math.round(dummyjsonDiscountedPrice / (1 - discountPercentage / 100)) 
     : dummyjsonDiscountedPrice;
 
-  const activeDiscount = (!isExpired && discountPercentage > 0) ? discountPercentage : 0;
+  const activeDiscount = discountPercentage > 0 ? discountPercentage : 0;
   const currentPrice = activeDiscount > 0 ? dummyjsonDiscountedPrice : calculatedOriginalPrice;
   const originalPriceDisplay = activeDiscount > 0 ? calculatedOriginalPrice : null;
 
@@ -63,7 +60,6 @@ function ProductCard({
           {activeDiscount > 0 && (
             <div className="deal-header">
               <span className="deal-badge">Limited time deal</span>
-              <span className="deal-timer">Ends in {formattedTime}</span>
             </div>
           )}
           
