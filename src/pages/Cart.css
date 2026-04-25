@@ -22,7 +22,32 @@
   font-size: 28px;
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+}
+
+.cart-header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.deselect-all-link {
+  color: #007185;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.deselect-all-link:hover {
+  text-decoration: underline;
+  color: #c45500;
+}
+
+.price-header {
+  font-size: 14px;
+  color: #565959;
 }
 
 .empty-cart {
@@ -67,6 +92,19 @@
   padding: 15px 0;
   border-bottom: 1px solid #ddd;
   gap: 20px;
+  align-items: flex-start;
+}
+
+.cart-item-checkbox {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.cart-item-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
 }
 
 .cart-item-image {

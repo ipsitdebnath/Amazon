@@ -59,7 +59,7 @@ function App() {
             : item
         );
       }
-      return [...prev, { ...product, quantity: 1 }];
+      return [...prev, { ...product, quantity: 1, selected: true }];
     });
   };
 
@@ -76,6 +76,20 @@ function App() {
       prev.map((item) =>
         item.id === productId ? { ...item, quantity: qty } : item
       )
+    );
+  };
+
+  const toggleSelect = (productId) => {
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === productId ? { ...item, selected: !item.selected } : item
+      )
+    );
+  };
+
+  const selectAll = (isSelected) => {
+    setCart((prev) =>
+      prev.map((item) => ({ ...item, selected: isSelected }))
     );
   };
 
@@ -111,7 +125,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home searchTerm={searchTerm} onAddToCart={addToCart} category={category} />} />
             <Route path="/login" element={<Login onLogin={login} />} />
-            <Route path="/cart" element={<Cart cart={cart} onUpdateQty={updateQuantity} onRemove={removeFromCart} />} />
+            <Route path="/cart" element={<Cart cart={cart} onUpdateQty={updateQuantity} onRemove={removeFromCart} onToggleSelect={toggleSelect} onSelectAll={selectAll} />} />
             <Route path="/product/:id" element={<ProductDetail onAddToCart={addToCart} />} />
             <Route path="/checkout" element={<Checkout cart={cart} onClearCart={clearCart} onAddOrder={addOrder} />} />
             <Route path="/orders" element={<Orders orders={orders} onAddToCart={addToCart} />} />

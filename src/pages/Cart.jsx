@@ -1,16 +1,20 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./Cart.css";
 
-function Cart({ cart, onUpdateQty, onRemove }) {
+function Cart({ cart, onUpdateQty, onRemove, onToggleSelect, onSelectAll }) {
   const navigate = useNavigate();
 
+  const selectedItems = cart.filter(item => item.selected !== false);
+  
   const getCartTotal = () => {
-    return cart.reduce((total, item) => total + item.price * 96 * item.quantity, 0);
+    return selectedItems.reduce((total, item) => total + item.price * 96 * item.quantity, 0);
   };
 
   const getTotalItems = () => {
-    return cart.reduce((total, item) => total + item.quantity, 0);
+    return selectedItems.reduce((total, item) => total + item.quantity, 0);
   };
+
+  const isAllSelected = cart.length > 0 && cart.every(item => item.selected !== false);
 
   const handleDecrease = (id, currentQty) => {
     if (currentQty <= 1) {
@@ -28,6 +32,15 @@ function Cart({ cart, onUpdateQty, onRemove }) {
     <div className="cart-page">
       <div className="cart-left">
         <h1 className="cart-title">Shopping Cart</h1>
+        {cart.length > 0 && (
+          <div className="cart-header-actions">
+            <span className="deselect-all-link" onClick={() => onSelectAll(!isAllSelected)}>
+              {isAllSelected ? "Deselect all items" : "Select all items"}
+            </span>
+            <span className="price-header">Price</span>
+          </div>
+        )}
+        
         {cart.length === 0 ? (
           <div className="empty-cart">
             <h2>Your Amazon Cart is empty.</h2>
@@ -40,6 +53,13 @@ function Cart({ cart, onUpdateQty, onRemove }) {
           <div className="cart-items">
             {cart.map((item) => (
               <div key={item.id} className="cart-item">
+                <div className="cart-item-checkbox">
+                  <input 
+                    type="checkbox" 
+                    checked={item.selected !== false} 
+                    onChange={() => onToggleSelect(item.id)}
+                  />
+                </div>
                 <img src={item.image} alt={item.title} className="cart-item-image" />
                 <div className="cart-item-info">
                   <Link to={`/product/${item.id}`} className="cart-item-title-link">
@@ -83,8 +103,14 @@ function Cart({ cart, onUpdateQty, onRemove }) {
             <h3>
               Subtotal ({getTotalItems()} items): <strong>₹{Math.round(getCartTotal())}</strong>
             </h3>
-            <Link to="/checkout">
-              <button className="checkout-btn">Proceed to Checkout</button>
+            <Link to={selectedItems.length > 0 ? "/checkout" : "#"}>
+              <button 
+                className="checkout-btn" 
+                disabled={selectedItems.length === 0}
+                style={{ opacity: selectedItems.length === 0 ? 0.5 : 1 }}
+              >
+                Proceed to Checkout
+              </button>
             </Link>
           </div>
         </div>
