@@ -46,48 +46,50 @@ const Account = ({ user }) => {
   ];
 
   return (
-    <div className="account-container">
-      <h1>Your Account</h1>
-      <div className="account-grid">
-        {accountOptions.map((option, index) => (
-          <div key={index} className="account-card">
-            <div className="account-card-icon">{option.icon}</div>
-            <div className="account-card-content">
-              <h3>{option.title}</h3>
-              <p>{option.description}</p>
+    <div className="account-page-wrapper">
+      <div className="account-container">
+        <h1>Your Account</h1>
+        <div className="account-grid">
+          {accountOptions.map((option, index) => (
+            <div key={index} className="account-card">
+              <div className="account-card-icon">{option.icon}</div>
+              <div className="account-card-content">
+                <h3>{option.title}</h3>
+                <p>{option.description}</p>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <div className="account-sections-grid">
-        <div className="account-section">
-          <h2>Digital content and devices</h2>
-          <ul>
-            <li>Apps and more</li>
-            <li>Content Library</li>
-            <li>Devices</li>
-            <li>Digital gifts you've received</li>
-            <li>Digital and device forum</li>
-          </ul>
-        </div>
-        <div className="account-section">
-          <h2>Email alerts, messages, and ads</h2>
-          <ul>
-            <li>Advertising preferences</li>
-            <li>Communication preferences</li>
-            <li>SMS alert preferences</li>
-            <li>Message Centre</li>
-            <li>Alexa shopping notifications</li>
-          </ul>
-        </div>
-        <div className="account-section">
-          <h2>More ways to pay</h2>
-          <ul>
-            <li>Default Purchase Settings</li>
-            <li>Amazon Pay</li>
-            <li>Coupons</li>
-          </ul>
+        <div className="account-sections-grid">
+          <div className="account-section">
+            <h2>Digital content and devices</h2>
+            <ul>
+              <li>Apps and more</li>
+              <li>Content Library</li>
+              <li>Devices</li>
+              <li>Digital gifts you've received</li>
+              <li>Digital and device forum</li>
+            </ul>
+          </div>
+          <div className="account-section">
+            <h2>Email alerts, messages, and ads</h2>
+            <ul>
+              <li>Advertising preferences</li>
+              <li>Communication preferences</li>
+              <li>SMS alert preferences</li>
+              <li>Message Centre</li>
+              <li>Alexa shopping notifications</li>
+            </ul>
+          </div>
+          <div className="account-section">
+            <h2>More ways to pay</h2>
+            <ul>
+              <li>Default Purchase Settings</li>
+              <li>Amazon Pay</li>
+              <li>Coupons</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
