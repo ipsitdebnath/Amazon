@@ -9,6 +9,7 @@ function Home({ searchTerm, onAddToCart, category }) {
   const [error, setError] = useState(null);
 
   // Filtering & Sorting State
+  const [sortOrder, setSortOrder] = useState("");
 
   useEffect(() => {
     fetch("https://dummyjson.com/products?limit=194")
@@ -45,6 +46,11 @@ function Home({ searchTerm, onAddToCart, category }) {
         return false;
       }
       return true;
+    })
+    .sort((a, b) => {
+      if (sortOrder === "low-to-high") return a.price - b.price;
+      if (sortOrder === "high-to-low") return b.price - a.price;
+      return 0; // default
     });
 
   if (loading) return <div className="home-loading"><h1>Loading Products...</h1></div>;
@@ -55,6 +61,14 @@ function Home({ searchTerm, onAddToCart, category }) {
       <HeroCarousel />
 
       <div className="home-container">
+        <div className="home-controls-right">
+          <label>Sort by Price:</label>
+          <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
+            <option value="">Featured</option>
+            <option value="low-to-high">Low to High</option>
+            <option value="high-to-low">High to Low</option>
+          </select>
+        </div>
 
         <div className="home-row">
           {filteredProducts.length > 0 ? (
