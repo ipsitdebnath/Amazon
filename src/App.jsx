@@ -110,7 +110,7 @@ function App() {
             <Route path="/cart" element={<Cart cart={cart} onUpdateQty={updateQuantity} onRemove={removeFromCart} />} />
             <Route path="/product/:id" element={<ProductDetail onAddToCart={addToCart} />} />
             <Route path="/checkout" element={<Checkout cart={cart} onClearCart={clearCart} onAddOrder={addOrder} />} />
-            <Route path="/orders" element={<Orders orders={orders} />} />
+            <Route path="/orders" element={<Orders orders={orders} onAddToCart={addToCart} />} />
           </Routes>
         </main>
         <Footer />

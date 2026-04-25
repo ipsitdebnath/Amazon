@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Orders.css";
 
-function Orders({ orders }) {
+function Orders({ orders, onAddToCart }) {
+  const navigate = useNavigate();
+
   return (
     <div className="orders-page">
       <h1>Your Orders</h1>
@@ -43,8 +45,12 @@ function Orders({ orders }) {
                       </Link>
                       <p className="order-item-seller">Return eligible through 30 days after delivery</p>
                       <div className="order-item-actions">
-                        <button className="buy-again-btn">Buy it again</button>
-                        <button className="view-item-btn">View your item</button>
+                        <button className="buy-again-btn" onClick={() => onAddToCart(item)}>
+                          Buy it again
+                        </button>
+                        <button className="view-item-btn" onClick={() => navigate(`/product/${item.id}`)}>
+                          View your item
+                        </button>
                       </div>
                     </div>
                   </div>
