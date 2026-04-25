@@ -42,7 +42,13 @@
   margin-right: 15px;
   display: flex;
   align-items: flex-start;
-  padding-top: 5px;
+  min-width: 60px;
+}
+
+.account-card-icon img {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
 }
 
 .account-card-content h3 {

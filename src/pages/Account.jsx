@@ -1,47 +1,55 @@
 import React from 'react';
 import './Account.css';
+import orderingImg from '../image/Box._CB485927553_.png';
+import signInImg from '../image/sign-in-lock._CB485931504_.png';
+import primeImg from '../image/rc_prime._CB485926807_.png';
+import addressImg from '../image/address-map-pin._CB485934183_.png';
+import businessImg from '../image/amazon_business_yap_atf._CB588250268_.jpg';
+import paymentsImg from '../image/Payments._CB485926359_.png';
+import payBalanceImg from '../image/amazon_pay._CB485946857_.png';
+import contactImg from '../image/contact_us._CB623781998_.png';
 
 const Account = ({ user }) => {
   const accountOptions = [
     {
       title: "Your Orders",
       description: "Track, return, or buy things again",
-      icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#232f3e" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg>
+      icon: <img src={orderingImg} alt="Orders" width="50" />
     },
     {
       title: "Login & security",
       description: "Edit login, name, and mobile number",
-      icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#232f3e" strokeWidth="1.5"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+      icon: <img src={signInImg} alt="Security" width="50" />
     },
     {
       title: "Prime",
       description: "View benefits and payment settings",
-      icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#232f3e" strokeWidth="1.5"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z" /><path d="M12 21V12m0 0 8-4.5M12 12l-8-4.5" /></svg>
+      icon: <img src={primeImg} alt="Prime" width="50" />
     },
     {
       title: "Your Addresses",
       description: "Edit addresses for orders and gifts",
-      icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#232f3e" strokeWidth="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+      icon: <img src={addressImg} alt="Addresses" width="50" />
     },
     {
       title: "Your business account",
       description: "Sign up for free to save up to 18% with GST invoice",
-      icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#232f3e" strokeWidth="1.5"><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
+      icon: <img src={businessImg} alt="Business" width="50" />
     },
     {
       title: "Payment options",
       description: "Edit or add payment methods",
-      icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#232f3e" strokeWidth="1.5"><rect x="2" y="5" width="20" height="14" rx="2" /><path d="M2 10h20" /></svg>
+      icon: <img src={paymentsImg} alt="Payment" width="50" />
     },
     {
       title: "Amazon Pay balance",
       description: "Add money to your balance",
-      icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#232f3e" strokeWidth="1.5"><circle cx="12" cy="12" r="10" /><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" /><path d="M12 18V6" /></svg>
+      icon: <img src={payBalanceImg} alt="Pay" width="50" />
     },
     {
       title: "Contact Us",
       description: "Contact our customer service via phone or chat",
-      icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#232f3e" strokeWidth="1.5"><path d="M3 18v-6a9 9 0 0 1 18 0v6" /><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" /></svg>
+      icon: <img src={contactImg} alt="Contact" width="50" />
     }
   ];
 
