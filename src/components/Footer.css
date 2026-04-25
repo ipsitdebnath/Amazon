@@ -1,0 +1,50 @@
+.footer {
+  margin-top: 30px;
+}
+
+.footer-top {
+  background-color: #37475a;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.footer-top:hover {
+  background-color: #485769;
+}
+
+.footer-content {
+  background-color: #232f3e;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 40px 20px;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.footer-col h3 {
+  color: white;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.footer-col p {
+  color: #ddd;
+  font-size: 14px;
+  line-height: 2;
+  cursor: pointer;
+}
+
+.footer-col p:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  background-color: #131921;
+  color: #999;
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+}

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import "./Home.css";
 
-function Home({ searchTerm }) {
+function Home({ searchTerm, onAddToCart }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -96,6 +96,7 @@ function Home({ searchTerm }) {
                 discountPercentage={product.discountPercentage}
                 stock={product.stock}
                 description={product.description}
+                onAddToCart={onAddToCart}
               />
             ))
           ) : (

@@ -1,16 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useCart } from "../context/CartContext";
-import { useAuth } from "../context/AuthContext";
-
 import "./Navbar.css";
 
-function Navbar({ onSearch }) {
-  const { cart } = useCart();
-  const { user, logout } = useAuth();
+function Navbar({ cart, user, onSearch }) {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
-  const [theme, setTheme] = useState("light");
 
   const [products, setProducts] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
@@ -76,12 +70,6 @@ function Navbar({ onSearch }) {
     setShowDropdown(false);
     setSearchTerm(product.title);
     navigate(`/product/${product.id}`);
-  };
-
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
   };
 
   // Helper to highlight matching text
@@ -150,14 +138,13 @@ function Navbar({ onSearch }) {
       </div>
 
       <div className="nav-right">
-        <div className="nav-option theme-toggle" onClick={toggleTheme}>
-          <span className="nav-option-lineOne">Theme</span>
-          <span className="nav-option-lineTwo">{theme === "light" ? "🌙 Dark" : "☀️ Light"}</span>
-        </div>
-
         <Link to="/login" className="nav-option no-underline">
-          <span className="nav-option-lineOne">Hello, Guest</span>
-          <span className="nav-option-lineTwo">Sign In</span>
+          <span className="nav-option-lineOne">
+            {user ? `Hi, ${user.name}` : "Hello, Guest"}
+          </span>
+          <span className="nav-option-lineTwo">
+            {user ? "Account" : "Sign In"}
+          </span>
         </Link>
 
         <Link to="/orders" className="nav-option no-underline">

@@ -1,9 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useCart } from "../context/CartContext";
 import "./Cart.css";
 
-function CartPage() {
-  const { cart, updateQuantity, removeFromCart } = useCart();
+function Cart({ cart, onUpdateQty, onRemove }) {
   const navigate = useNavigate();
 
   const getCartTotal = () => {
@@ -16,10 +14,14 @@ function CartPage() {
 
   const handleDecrease = (id, currentQty) => {
     if (currentQty <= 1) {
-      removeFromCart(id);
+      onRemove(id);
     } else {
-      updateQuantity(id, -1);
+      onUpdateQty(id, currentQty - 1);
     }
+  };
+
+  const handleIncrease = (id, currentQty) => {
+    onUpdateQty(id, currentQty + 1);
   };
 
   return (
@@ -49,10 +51,10 @@ function CartPage() {
                     <div className="quantity-controls">
                       <button onClick={() => handleDecrease(item.id, item.quantity)}>-</button>
                       <span>{item.quantity}</span>
-                      <button onClick={() => updateQuantity(item.id, 1)}>+</button>
+                      <button onClick={() => handleIncrease(item.id, item.quantity)}>+</button>
                     </div>
                     <span className="separator">|</span>
-                    <button className="remove-btn" onClick={() => removeFromCart(item.id)}>
+                    <button className="remove-btn" onClick={() => onRemove(item.id)}>
                       Delete
                     </button>
                   </div>
@@ -81,7 +83,9 @@ function CartPage() {
             <h3>
               Subtotal ({getTotalItems()} items): <strong>${getCartTotal().toFixed(2)}</strong>
             </h3>
-            <button className="checkout-btn">Proceed to Checkout</button>
+            <Link to="/checkout">
+              <button className="checkout-btn">Proceed to Checkout</button>
+            </Link>
           </div>
         </div>
       )}
@@ -89,4 +93,4 @@ function CartPage() {
   );
 }
 
-export default CartPage;
+export default Cart;

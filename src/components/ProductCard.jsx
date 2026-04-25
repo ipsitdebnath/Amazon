@@ -1,19 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../context/CartContext";
 import "./ProductCard.css";
 
 function ProductCard({ 
   id, title, price, rating, image, 
-  brand, category, discountPercentage, stock, description 
+  brand, category, discountPercentage, stock, description,
+  onAddToCart 
 }) {
-  const { addToCart } = useCart();
   const [isAdded, setIsAdded] = useState(false);
 
   const handleAddToCart = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    addToCart({ id, title, price, image });
+    onAddToCart({ id, title, price, image });
     setIsAdded(true);
     setTimeout(() => {
       setIsAdded(false);

@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useCart } from "../context/CartContext";
 import "./ProductDetail.css";
 
-function ProductDetail() {
+function ProductDetail({ onAddToCart }) {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { addToCart } = useCart();
   
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -34,7 +32,7 @@ function ProductDetail() {
 
   const handleAddToCart = () => {
     if (product) {
-      addToCart({
+      onAddToCart({
         id: product.id,
         title: product.title,
         price: product.price,
