@@ -27,7 +27,7 @@ function Orders({ orders, onAddToCart }) {
                   </div>
                   <div className="order-info-block">
                     <span>TOTAL</span>
-                    <strong>₹{(order.total * 96).toFixed(2)}</strong>
+                    <strong>₹{Math.round(order.total * 96)}</strong>
                   </div>
                 </div>
                 <div className="order-header-right">

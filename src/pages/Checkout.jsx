@@ -31,11 +31,11 @@ function Checkout({ cart, onClearCart, onAddOrder }) {
         {cart.map((item) => (
           <div key={item.id} className="checkout-item">
             <span>{item.title} × {item.quantity}</span>
-            <span>₹{(item.price * 96 * item.quantity).toFixed(2)}</span>
+            <span>₹{Math.round(item.price * 96 * item.quantity)}</span>
           </div>
         ))}
         <hr />
-        <h3>Total: ₹{total.toFixed(2)}</h3>
+        <h3>Total: ₹{Math.round(total)}</h3>
         <button onClick={handlePlaceOrder}>Place Order</button>
       </div>
     </div>

@@ -3,15 +3,13 @@ import ProductCard from "../components/ProductCard";
 import HeroCarousel from "../components/HeroCarousel";
 import "./Home.css";
 
-function Home({ searchTerm, onAddToCart }) {
+function Home({ searchTerm, onAddToCart, category }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   // Filtering & Sorting State
-  const [category, setCategory] = useState("all");
   const [sortOrder, setSortOrder] = useState("");
-  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     fetch("https://dummyjson.com/products?limit=194")
@@ -20,17 +18,13 @@ function Home({ searchTerm, onAddToCart }) {
         return res.json();
       })
       .then((data) => {
-      // Shuffle products randomly (Fisher-Yates)
-      const shuffled = [...data.products];
-      for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-      }
-      setProducts(shuffled);
-      
-      // Extract unique categories for the filter
-        const uniqueCategories = [...new Set(data.products.map((p) => p.category))];
-        setCategories(uniqueCategories);
+        // Shuffle products randomly (Fisher-Yates)
+        const shuffled = [...data.products];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        setProducts(shuffled);
         setLoading(false);
       })
       .catch((err) => {
@@ -68,16 +62,6 @@ function Home({ searchTerm, onAddToCart }) {
 
       <div className="home-container">
         <div className="home-controls">
-          <div className="control-group">
-            <label>Category:</label>
-            <select value={category} onChange={(e) => setCategory(e.target.value)}>
-              <option value="all">All Categories</option>
-              {categories.map((c) => (
-                <option key={c} value={c}>{c}</option>
-              ))}
-            </select>
-          </div>
-
           <div className="control-group">
             <label>Sort by Price:</label>
             <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>

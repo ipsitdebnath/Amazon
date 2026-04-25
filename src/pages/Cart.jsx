@@ -60,12 +60,12 @@ function Cart({ cart, onUpdateQty, onRemove }) {
                   </div>
                 </div>
                 <div className="cart-item-price">
-                  <strong>₹{(item.price * 96).toFixed(2)}</strong>
+                  <strong>₹{Math.round(item.price * 96)}</strong>
                 </div>
               </div>
             ))}
             <div className="cart-items-subtotal">
-              Subtotal ({getTotalItems()} items): <strong>₹{getCartTotal().toFixed(2)}</strong>
+              Subtotal ({getTotalItems()} items): <strong>₹{Math.round(getCartTotal())}</strong>
             </div>
           </div>
         )}
@@ -81,7 +81,7 @@ function Cart({ cart, onUpdateQty, onRemove }) {
               <span>Your order qualifies for FREE Shipping.</span>
             </div>
             <h3>
-              Subtotal ({getTotalItems()} items): <strong>₹{getCartTotal().toFixed(2)}</strong>
+              Subtotal ({getTotalItems()} items): <strong>₹{Math.round(getCartTotal())}</strong>
             </h3>
             <Link to="/checkout">
               <button className="checkout-btn">Proceed to Checkout</button>

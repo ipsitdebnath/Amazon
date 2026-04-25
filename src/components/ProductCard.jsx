@@ -19,9 +19,9 @@ function ProductCard({
     }, 1500);
   };
 
-  const inrPrice = price * 96;
+  const inrPrice = Math.round(price * 96);
   const originalPrice = discountPercentage 
-    ? (inrPrice / (1 - discountPercentage / 100)).toFixed(2) 
+    ? Math.round(inrPrice / (1 - discountPercentage / 100)) 
     : null;
 
   return (
@@ -56,8 +56,7 @@ function ProductCard({
           )}
           <div className="product-price">
             <span className="price-symbol">₹</span>
-            <span className="price-whole">{Math.floor(inrPrice)}</span>
-            <span className="price-fraction">{(inrPrice % 1).toFixed(2).substring(2)}</span>
+            <span className="price-whole">{inrPrice}</span>
           </div>
           {originalPrice && (
             <span className="original-price">M.R.P.: ₹{originalPrice}</span>

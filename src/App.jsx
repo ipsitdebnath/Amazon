@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import CategoryBar from "./components/CategoryBar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -27,6 +28,7 @@ function App() {
   });
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [category, setCategory] = useState("all");
 
   // ---- LocalStorage Syncing ----
   useEffect(() => {
@@ -103,9 +105,10 @@ function App() {
           user={user}
           onSearch={handleSearch}
         />
+        <CategoryBar selectedCategory={category} onSelectCategory={setCategory} />
         <main className="main-content" style={{ minHeight: "80vh" }}>
           <Routes>
-            <Route path="/" element={<Home searchTerm={searchTerm} onAddToCart={addToCart} />} />
+            <Route path="/" element={<Home searchTerm={searchTerm} onAddToCart={addToCart} category={category} />} />
             <Route path="/login" element={<Login onLogin={login} />} />
             <Route path="/cart" element={<Cart cart={cart} onUpdateQty={updateQuantity} onRemove={removeFromCart} />} />
             <Route path="/product/:id" element={<ProductDetail onAddToCart={addToCart} />} />
