@@ -138,14 +138,16 @@ function Navbar({ cart, user, onSearch }) {
       </div>
 
       <div className="nav-right">
-        <Link to="/login" className="nav-option no-underline">
-          <span className="nav-option-lineOne">
-            {user ? `Hi, ${user.name}` : "Hello, Guest"}
-          </span>
-          <span className="nav-option-lineTwo">
-            {user ? "Account" : "Sign In"}
-          </span>
-        </Link>
+        {user ? (
+          <div className="nav-option" style={{ cursor: "default" }}>
+            <span className="nav-option-lineTwo">Hi, {user.name}</span>
+          </div>
+        ) : (
+          <Link to="/login" className="nav-option no-underline">
+            <span className="nav-option-lineOne">Hello, Guest</span>
+            <span className="nav-option-lineTwo">Sign In</span>
+          </Link>
+        )}
 
         <Link to="/orders" className="nav-option no-underline">
           <span className="nav-option-lineOne">Returns</span>

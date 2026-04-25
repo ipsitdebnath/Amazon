@@ -2,13 +2,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Checkout.css";
 
-function Checkout({ cart, onClearCart }) {
+function Checkout({ cart, onClearCart, onAddOrder }) {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const navigate = useNavigate();
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const handlePlaceOrder = () => {
     setOrderPlaced(true);
+    onAddOrder(cart);
     onClearCart();
     setTimeout(() => navigate("/"), 3000);
   };
