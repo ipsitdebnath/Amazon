@@ -91,6 +91,11 @@ function Home({ searchTerm }) {
                 price={product.price}
                 rating={product.rating}
                 image={product.thumbnail}
+                brand={product.brand}
+                category={product.category}
+                discountPercentage={product.discountPercentage}
+                stock={product.stock}
+                description={product.description}
               />
             ))
           ) : (
