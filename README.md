@@ -1,130 +1,106 @@
-# 🛒 Amazon Clone
+# 🛒 Amazon Clone (E-commerce Web App)
 
-A fully functional Amazon-inspired e-commerce web application built with **React** and **Vite** as part of a Web Application Project (WAP).
-
----
-
-## 📌 Project Overview
-
-This project is a front-end clone of Amazon.com that replicates core e-commerce functionality including product browsing, product details, cart management, and user authentication UI. It consumes the [FakeStore API](https://fakestoreapi.com/) for product data.
+A fully functional Amazon-inspired e-commerce application built using modern web technologies. This project replicates key features of a real-world online shopping platform including product browsing, search, cart management, authentication, and order handling.
 
 ---
 
 ## 🚀 Live Demo
+https://your-frontend-url.com  
 
-> 🔗 _Link will be added after deployment on Netlify/Vercel_
+---
+
+## 📦 Features
+
+### 🏠 Home & Products
+- Display products with images, price, and ratings  
+- Product listing with pagination  
+- Product detail page  
+
+### 🔍 Search & Filter
+- Real-time search functionality  
+- Category-based filtering  
+- Price and rating sorting  
+
+### 🛒 Cart System
+- Add to cart  
+- Remove items from cart  
+- Update product quantity  
+- Persistent cart using localStorage  
+
+### 👤 Authentication
+- User signup and login  
+- Protected routes  
+- Logout functionality  
+
+### 📦 Orders
+- Place orders  
+- View order history  
+- Order tracking UI  
+
+### ❤️ Wishlist
+- Add/remove products to wishlist  
+- Persistent storage  
+
+### 🔔 Notifications
+- Toast messages for user actions  
+
+### 📱 Responsive Design
+- Fully responsive for mobile, tablet, and desktop  
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|---|---|
-| React 18 | UI Framework |
-| Vite | Build Tool & Dev Server |
-| React Router DOM | Client-side Routing |
-| Context API + useReducer | Global State (Cart) |
-| FakeStore API | Product Data Source |
-| CSS3 | Styling & Responsive Layout |
+### Frontend
+- React.js  
+- React Router  
+- Context API / State Management  
+- CSS / Tailwind  
+
+### Backend *(if implemented)*
+- Node.js  
+- Express.js  
+
+### Database *(if implemented)*
+- MongoDB  
+
+### Deployment
+- Frontend: Vercel  
+- Backend: Render / Railway  
+
+---
+
+## 🔗 API Integration
+
+Currently using mock API:
+
+GET https://dummyjson.com/products?limit=200  
+
+### Future Scope
+- Replace with custom backend API  
+- Add database integration  
 
 ---
 
 ## 📁 Folder Structure
 
-Amazon/
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   │   ├── Navbar.jsx
-│   │   └── Footer.jsx
-│   ├── context/
-│   │   └── CartContext.jsx
-│   ├── pages/
-│   │   ├── Home.jsx
-│   │   ├── ProductDetail.jsx
-│   │   ├── Cart.jsx
-│   │   └── Login.jsx
-│   ├── App.jsx
-│   ├── App.css
-│   ├── index.css
-│   └── main.jsx
-├── index.html
-├── package.json
-└── vite.config.js
+src/
+├── components/
+├── pages/
+├── context/
+├── hooks/
+├── utils/
+├── App.js
+└── index.js
+
 
 ---
 
-## ✨ Features
+## ⚙️ Installation & Setup
 
-- 🏠 **Home Page** — Product grid fetched from FakeStore API
-- 🔍 **Search & Filter** — Filter products by category
-- 📄 **Product Detail Page** — Full product info with Add to Cart
-- 🛒 **Cart** — Add, remove, update quantity, and view total
-- 💾 **Persistent Cart** — Cart saved via `localStorage`
-- 🔐 **Login / Signup UI** — Form-based authentication interface
-- 📱 **Responsive Design** — Works on mobile, tablet, and desktop
+### 1. Clone the repository
 
----
+### 2. Navigate to project folder
 
-## ⚙️ Getting Started
+### 2. Navigate to project folder
 
-### Prerequisites
-- Node.js v18+
-- npm
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/your-username/amazon-clone.git
-
-# Navigate into the project
-cd amazon-clone
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-```
-
-App runs at `http://localhost:5173`
-
----
-
-## 📦 Available Scripts
-
-| Script | Description |
-|---|---|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build |
-
----
-
-## 🔗 API Reference
-
-This project uses the [FakeStore API](https://fakestoreapi.com/):
-
-| Endpoint | Description |
-|---|---|
-| `GET /products` | Fetch all products |
-| `GET /products/:id` | Fetch single product |
-| `GET /products/categories` | Fetch all categories |
-| `GET /products/category/:name` | Fetch by category |
-
----
-
-## 🧑‍💻 Author
-**Anukush Kumar**
-**Ipsit Debnath**
-**Naman Saini**  
-
-WAP Project — React Amazon Clone
-
----
-## 📄 License
-
-This project is for educational purposes only.  
-Product data sourced from [FakeStore API](https://fakestoreapi.com/).
