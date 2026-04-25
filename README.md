@@ -5,7 +5,7 @@ A fully functional Amazon-inspired e-commerce application built using modern web
 ---
 
 ## 🚀 Live Demo
-https://your-frontend-url.com  
+https://amazon-sigma-red.vercel.app/
 
 ---
 
@@ -102,5 +102,57 @@ src/
 
 ### 2. Navigate to project folder
 
-### 2. Navigate to project folder
+### 3. Install dependencies
 
+### 4. Run the app
+
+
+---
+
+## 🌐 Deployment
+
+This project is deployed on Vercel.
+
+### Fix for Refresh 404 Issue
+Add a `vercel.json` file:
+{
+"routes": [
+{
+"src": "/(.*)",
+"dest": "/index.html"
+}
+]
+}
+
+
+---
+
+## 🔥 Future Enhancements
+
+- AI-based product recommendations  
+- Chatbot assistant  
+- Admin dashboard  
+- Payment gateway integration  
+- Advanced analytics  
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!  
+Feel free to fork the repo and submit a pull request.
+
+---
+
+## 📜 License
+
+This project is for educational purposes only.
+
+---
+
+## 👨‍💻 Author
+
+Developers :-
+Ankush Kumar
+Ipsit Debnath
+Naman Saini
