@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import "./ProductCard.css";
 
@@ -9,7 +10,9 @@ function ProductCard({
   const { addToCart } = useCart();
   const [isAdded, setIsAdded] = useState(false);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     addToCart({ id, title, price, image });
     setIsAdded(true);
     setTimeout(() => {
@@ -25,13 +28,15 @@ function ProductCard({
     <div className="product-card">
       {category && <span className="product-category-badge">{category}</span>}
       
-      <div className="product-image-container">
+      <Link to={`/product/${id}`} className="product-image-container">
         <img src={image} alt={title} className="product-image" />
-      </div>
+      </Link>
       
       <div className="product-info">
         {brand && <p className="product-brand">{brand}</p>}
-        <h3 className="product-title" title={title}>{title}</h3>
+        <Link to={`/product/${id}`} style={{ textDecoration: 'none' }}>
+          <h3 className="product-title" title={title}>{title}</h3>
+        </Link>
         
         {description && <p className="product-description">{description}</p>}
 
