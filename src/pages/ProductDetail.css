@@ -121,19 +121,40 @@
   margin-bottom: 20px;
 }
 
-.pdp-discount {
+.pdp-deal-header {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.pdp-deal-header .deal-badge {
+  background-color: #cc0c39;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 2px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pdp-deal-header .deal-timer {
+  color: #cc0c39;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pdp-price-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
   margin-bottom: 5px;
 }
 
-.pdp-discount .discount-badge {
+.pdp-discount-percent {
   color: #cc0c39;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 300;
-  background: none;
-  padding: 0;
+  margin-top: 2px;
 }
 
 .pdp-price-large {

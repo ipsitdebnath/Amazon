@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCountdown, getDealExpiration } from "../utils/timer";
 import "./ProductCard.css";
 
 function ProductCard({ 
@@ -8,6 +9,10 @@ function ProductCard({
   onAddToCart 
 }) {
   const [isAdded, setIsAdded] = useState(false);
+
+  // Dynamic pricing timer logic
+  const [dealExpiresAt] = useState(() => getDealExpiration(id, discountPercentage));
+  const { isExpired, formattedTime } = useCountdown(dealExpiresAt);
 
   const handleAddToCart = (e) => {
     e.preventDefault();
@@ -19,10 +24,14 @@ function ProductCard({
     }, 1500);
   };
 
-  const inrPrice = Math.round(price * 96);
-  const originalPrice = discountPercentage 
-    ? Math.round(inrPrice / (1 - discountPercentage / 100)) 
-    : null;
+  const dummyjsonDiscountedPrice = Math.round(price * 96);
+  const calculatedOriginalPrice = discountPercentage 
+    ? Math.round(dummyjsonDiscountedPrice / (1 - discountPercentage / 100)) 
+    : dummyjsonDiscountedPrice;
+
+  const activeDiscount = (!isExpired && discountPercentage > 0) ? discountPercentage : 0;
+  const currentPrice = activeDiscount > 0 ? dummyjsonDiscountedPrice : calculatedOriginalPrice;
+  const originalPriceDisplay = activeDiscount > 0 ? calculatedOriginalPrice : null;
 
   return (
     <div className="product-card">
@@ -51,15 +60,25 @@ function ProductCard({
         </div>
         
         <div className="product-price-container">
-          {discountPercentage > 0 && (
-            <span className="discount-badge">-{Math.round(discountPercentage)}%</span>
+          {activeDiscount > 0 && (
+            <div className="deal-header">
+              <span className="deal-badge">Limited time deal</span>
+              <span className="deal-timer">Ends in {formattedTime}</span>
+            </div>
           )}
-          <div className="product-price">
-            <span className="price-symbol">₹</span>
-            <span className="price-whole">{inrPrice}</span>
+          
+          <div className="price-row">
+            {activeDiscount > 0 && (
+              <span className="discount-percent">-{Math.round(activeDiscount)}%</span>
+            )}
+            <div className="product-price">
+              <span className="price-symbol">₹</span>
+              <span className="price-whole">{currentPrice}</span>
+            </div>
           </div>
-          {originalPrice && (
-            <span className="original-price">M.R.P.: ₹{originalPrice}</span>
+          
+          {originalPriceDisplay && (
+            <span className="original-price">M.R.P.: ₹{originalPriceDisplay}</span>
           )}
         </div>
         

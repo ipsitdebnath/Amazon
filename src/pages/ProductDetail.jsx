@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useCountdown, getDealExpiration } from "../utils/timer";
 import "./ProductDetail.css";
 
 function ProductDetail({ onAddToCart }) {
@@ -52,12 +53,39 @@ function ProductDetail({ onAddToCart }) {
   if (error) return <div className="pdp-error"><h2>{error}</h2><button onClick={() => navigate("/")}>Return to Home</button></div>;
   if (!product) return null;
 
-  const inrPrice = Math.round(product.price * 96);
-  const originalPrice = product.discountPercentage 
-    ? Math.round(inrPrice / (1 - product.discountPercentage / 100)) 
-    : null;
+  const dummyjsonDiscountedPrice = Math.round(product.price * 96);
+  const calculatedOriginalPrice = product.discountPercentage 
+    ? Math.round(dummyjsonDiscountedPrice / (1 - product.discountPercentage / 100)) 
+    : dummyjsonDiscountedPrice;
 
   const images = product.images || [product.thumbnail];
+
+  return (
+    <ProductDetailContent 
+      product={product} 
+      images={images} 
+      mainImage={mainImage} 
+      setMainImage={setMainImage} 
+      handleAddToCart={handleAddToCart} 
+      handleBuyNow={handleBuyNow} 
+      isAdded={isAdded}
+      dummyjsonDiscountedPrice={dummyjsonDiscountedPrice}
+      calculatedOriginalPrice={calculatedOriginalPrice}
+    />
+  );
+}
+
+function ProductDetailContent({ 
+  product, images, mainImage, setMainImage, 
+  handleAddToCart, handleBuyNow, isAdded, 
+  dummyjsonDiscountedPrice, calculatedOriginalPrice 
+}) {
+  const [dealExpiresAt] = useState(() => getDealExpiration(product.id, product.discountPercentage));
+  const { isExpired, formattedTime } = useCountdown(dealExpiresAt);
+
+  const activeDiscount = (!isExpired && product.discountPercentage > 0) ? product.discountPercentage : 0;
+  const currentPrice = activeDiscount > 0 ? dummyjsonDiscountedPrice : calculatedOriginalPrice;
+  const originalPriceDisplay = activeDiscount > 0 ? calculatedOriginalPrice : null;
 
   return (
     <div className="pdp-container">
@@ -102,18 +130,26 @@ function ProductDetail({ onAddToCart }) {
         <hr className="pdp-divider" />
 
         <div className="pdp-price-section">
-          {product.discountPercentage > 0 && (
-            <div className="pdp-discount">
-              <span className="discount-badge">-{Math.round(product.discountPercentage)}%</span>
-              <span className="pdp-price-large">
-                <span className="price-symbol">₹</span>
-                {inrPrice}
-              </span>
+          {activeDiscount > 0 && (
+            <div className="pdp-deal-header">
+              <span className="deal-badge">Limited time deal</span>
+              <span className="deal-timer">Ends in {formattedTime}</span>
             </div>
           )}
-          {originalPrice && (
+          
+          <div className="pdp-price-row">
+            {activeDiscount > 0 && (
+              <span className="pdp-discount-percent">-{Math.round(activeDiscount)}%</span>
+            )}
+            <span className="pdp-price-large">
+              <span className="price-symbol">₹</span>
+              {currentPrice}
+            </span>
+          </div>
+
+          {originalPriceDisplay && (
             <div className="pdp-original-price">
-              Typical price: <span>₹{originalPrice}</span>
+              Typical price: <span>₹{originalPriceDisplay}</span>
             </div>
           )}
         </div>
@@ -126,7 +162,7 @@ function ProductDetail({ onAddToCart }) {
 
       <div className="pdp-right">
         <div className="pdp-buy-box">
-          <div className="pdp-buy-price">₹{Math.round(product.price * 96)}</div>
+          <div className="pdp-buy-price">₹{currentPrice}</div>
           
           <div className="pdp-delivery">
             <p><strong>FREE delivery</strong> Wednesday.</p>

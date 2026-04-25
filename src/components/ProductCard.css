@@ -113,19 +113,44 @@
 .product-price-container {
   margin-top: auto;
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 6px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
   margin-bottom: 5px;
 }
 
-.discount-badge {
+.deal-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.deal-badge {
   background-color: #cc0c39;
   color: white;
   padding: 3px 6px;
   border-radius: 2px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.deal-timer {
+  color: #cc0c39;
   font-size: 12px;
   font-weight: 600;
+}
+
+.price-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.discount-percent {
+  color: #cc0c39;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .product-price {
