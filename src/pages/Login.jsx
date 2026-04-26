@@ -25,7 +25,7 @@ function Login({ onLogin }) {
     <div className="login-page">
       <div className="login-box">
         <img
-          src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
+          src="https://static.vecteezy.com/system/resources/thumbnails/019/136/319/small/amazon-logo-amazon-icon-free-free-vector.jpg"
           alt="Amazon"
           className="login-logo"
         />
