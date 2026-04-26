@@ -227,3 +227,19 @@
   cursor: not-allowed;
   box-shadow: none;
 }
+
+@media (max-width: 600px) {
+  .product-card {
+    padding: 12px;
+    margin: 5px;
+  }
+  
+  .product-image-container {
+    height: 160px;
+  }
+  
+  .product-title {
+    font-size: 14px;
+    height: 40px;
+  }
+}

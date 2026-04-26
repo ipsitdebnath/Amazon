@@ -48,3 +48,12 @@
   padding: 20px;
   font-size: 13px;
 }
+
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 15px;
+    gap: 20px;
+  }
+}

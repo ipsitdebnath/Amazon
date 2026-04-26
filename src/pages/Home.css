@@ -76,10 +76,16 @@
     grid-template-columns: 1fr;
   }
 
-
-
   .home-container {
     margin-top: -30px;
+  }
+  
+  .home-controls-right {
+    margin: 0 auto 15px auto;
+    width: 100%;
+    justify-content: center;
+    background-color: transparent;
+    box-shadow: none;
   }
 }
 

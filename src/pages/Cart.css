@@ -284,3 +284,17 @@
     text-align: left;
   }
 }
+
+@media (max-width: 600px) {
+  .cart-item-image {
+    width: 120px;
+    height: 120px;
+    align-self: center;
+  }
+  .empty-cart h2 {
+    font-size: 20px;
+  }
+  .cart-title {
+    font-size: 22px;
+  }
+}

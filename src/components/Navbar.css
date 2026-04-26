@@ -241,3 +241,70 @@
   color: #555;
   font-style: italic;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 15px 12px 15px;
+  }
+
+  .nav-left {
+    flex: 1;
+  }
+
+  .nav-right {
+    justify-content: flex-end;
+  }
+
+  .nav-search {
+    order: 3;
+    width: 100%;
+    flex: 0 0 100%;
+    margin-top: 10px;
+  }
+
+  .search-input {
+    height: 38px;
+  }
+
+  .search-btn {
+    height: 38px;
+  }
+
+  .nav-option-lineOne {
+    display: none;
+  }
+
+  .nav-option-lineTwo {
+    font-size: 13px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .logo-img {
+    width: 80px;
+    margin-top: 2px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-right .nav-option:nth-child(2) {
+    display: none; /* Hide Returns & Orders on mobile */
+  }
+
+  .nav-right .nav-option {
+    padding: 5px;
+    min-width: 45px;
+  }
+
+  .nav-cart {
+    padding: 5px;
+  }
+  
+  .nav-cart-text {
+    display: none; /* Hide Cart text, keep icon */
+  }
+}

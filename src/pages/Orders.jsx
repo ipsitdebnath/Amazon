@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Orders.css";
 
-function Orders({ orders, onAddToCart }) {
+function Orders({ orders, user, onAddToCart }) {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("Orders");
   const [searchQuery, setSearchQuery] = useState("");
@@ -90,7 +90,7 @@ function Orders({ orders, onAddToCart }) {
                         </div>
                         <div className="header-column">
                           <span className="label">SHIP TO</span>
-                          <span className="value link">Ankush Kumar</span>
+                          <span className="value link">{user ? user.name : "Guest"}</span>
                         </div>
                       </div>
                       <div className="order-header-right">

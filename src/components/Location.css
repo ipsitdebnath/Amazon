@@ -42,3 +42,9 @@
   line-height: 15px;
   white-space: nowrap;
 }
+
+@media (max-width: 768px) {
+  .nav-location {
+    display: none;
+  }
+}
